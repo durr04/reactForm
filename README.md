@@ -1,1 +1,1 @@
-React app with Form save data display on ui in Table with delet button
+React app with Form save data display on ui in Table with delete button
