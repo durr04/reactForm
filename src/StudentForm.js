@@ -2,21 +2,31 @@ import React, { useState } from "react";
 
 function StudentForm(props) {
   const [name, setName] = useState("");
-  const [city, setCity] = useState("");
-
+  const [gender, setGender] = useState("");
+  const [dob, setDOB] = useState("");
   const changeName = (event) => {
     setName(event.target.value);
   };
 
-  const changeCity = (event) => {
-    setCity(event.target.value);
+  const changeGender = (event) => {
+    setGender(event.target.value);
   };
 
+  const changeDOB = (event) => {
+    console.log(event.target.value);
+    setDOB(event.target.value);
+  };
   const transferValue = (event) => {
     event.preventDefault();
+    if (name === "" || gender === "" || dob === "") {
+      alert("Please fill all values");
+      return false;
+    }
+
     const val = {
       name,
-      city
+      gender,
+      dob
     };
     props.func(val);
     clearState();
@@ -24,15 +34,22 @@ function StudentForm(props) {
 
   const clearState = () => {
     setName("");
-    setCity("");
+    setGender("");
+    setDOB("");
   };
 
   return (
     <div>
       <label>Name</label>
       <input type="text" value={name} onChange={changeName} />
-      <label>City</label>
-      <input type="text" value={city} onChange={changeCity} />
+      <label>DOB</label>
+      <input type="date" value={dob} onChange={changeDOB} />
+      <label>Gender</label>
+      <select name="gender" required value={gender} onChange={changeGender}>
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Fale</option>
+      </select>
       <button onClick={transferValue}> Click Me</button>
     </div>
   );
