@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import StudentForm from "./StudentForm";
-const jsonData = [{ id: 1, name: "Akshit", city: "Moradabad" }];
+const jsonData = [{ id: 1, name: "Akshit", gender: "Male", dob: "2022-06-08" }];
 
 function TableData() {
   const [studentData, setStudentData] = useState(jsonData);
@@ -20,7 +20,8 @@ function TableData() {
       <tr>
         <td id={info.id}>{info.id}</td>
         <td>{info.name}</td>
-        <td>{info.city}</td>
+        <td>{info.gender}</td>
+        <td>{info.dob}</td>
         <td>
           <button id={info.id} onClick={Deletme}>
             Delete
@@ -45,7 +46,8 @@ function TableData() {
           <tr>
             <th>Sr.NO</th>
             <th>Name</th>
-            <th>City</th>
+            <th>Gender</th>
+            <th>DOB</th>
             <th>Delet</th>
           </tr>
         </thead>
